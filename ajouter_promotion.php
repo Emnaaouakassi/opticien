@@ -1,0 +1,84 @@
+<?php require_once('header.php'); ?>
+<section class="content-header">
+	<h1>Promotion</h1>
+</section>
+<?php
+<form method="POST" action="ajoutpromotion.php">
+
+
+
+
+
+
+
+
+
+
+
+                                            <section id="main-content">
+											
+											<section class="content">
+											  <!-- Ajouter Promotion -->
+											  <div class="row mt">
+												<div class="col-lg-60">
+												  <div class="form-panel">
+													<div class=" form">
+													  <form class="cmxform form-horizontal style-form" id="commentForm" method="get" action="">
+														<div class="form-group ">
+														  <label for="cref" class="control-label col-lg-2">Reference Produit</label> 
+														  <div class="col-lg-6">
+															<input class=" form-control" id="cref" name="ref" minlength="2" type="text" required />
+														  </div>
+														</div>
+														<div class="form-group ">
+														  <label for="cenom" class="control-label col-lg-2">Nom Produit</label>
+														  <div class="col-lg-6">
+															<input class="form-control " id="cnom" name="nomp" type="text" required />
+														  </div>
+														</div>
+														<div class="form-group ">
+														  <label for="prixi" class="control-label col-lg-2">Prix Avant Promotion</label>
+														  <div class="col-lg-2">
+															<input class="form-control " id="cprixi" type="number" name="prixi" />
+														  </div>
+														</div>
+														<div class="form-group ">
+															<label for="pourcentage" class="control-label col-lg-2">Pourcentage (%)</label>
+															<div class="col-lg-2">
+															  <input class="form-control " id="cpourcentage" type="number" name="pourcentage" />
+															</div>
+														  </div>
+														<form action="#" class="form-horizontal style-form">
+														<div class="form-group ">
+														  <label class="control-label col-md-3">DATE </label>
+														  <div class="col-md-3 col-xs-11">
+															<input class="form-control form-control-inline input-medium default-date-picker" size="16" type="date" value="" name="datef">
+															<span class="help-block">Select date</span>
+														  </div>
+														</div>
+													  </form>
+														<br> 
+														<div class="form-group">
+														  <div class="col-lg-offset-2 col-lg-10">
+															<button class="btn btn-theme" type="submit" name="ajouter">Ajouter</button>
+															<button class="btn btn-theme04" type="button">Cancel</button>
+														  </div>
+														</div>
+													  </form>
+													</div>
+												  </div>
+												  <!-- /form-panel -->
+												</div>
+												<!-- /col-lg-12 -->
+											  </div>
+											  <!-- /row -->
+											</section>
+											<!-- /wrapper -->
+										  </section>
+
+
+
+                                        </form>
+
+<?php require_once('footer.php'); ?>
+<?php>
