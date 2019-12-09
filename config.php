@@ -1,23 +1,18 @@
-
 <?php
-/*
-// mysql_connect("database-host", "username", "password")
-$conn = mysql_connect("localhost","root","root") 
-            or die("cannot connected");
- 
-// mysql_select_db("database-name", "connection-link-identifier")
-@mysql_select_db("test",$conn);
-*/
- 
-/**
- * mysql_connect is deprecated
- * using mysqli_connect instead
- */
- 
-$databaseHost = 'localhost';
-$databaseName = 'project';
-$databaseUsername = 'root';
-$databasePassword = '';
- 
-$mysqli = mysqli_connect($databaseHost, $databaseUsername, $databasePassword, $databaseName); 
+class config {
+    private static $instance = NULL;
+    public static function getConnexion() {
+      if (!isset(self::$instance)) {
+		try{
+    self::$instance = new PDO('mysql:host=localhost;port=3306;dbname=projet;charset=utf8', 'root', '');
+
+		self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+		}catch(Exception $e){
+            die('Erreur: '.$e->getMessage());
+		}
+      }
+      return self::$instance;
+    }
+  }
+  
 ?>
