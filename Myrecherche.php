@@ -4,7 +4,11 @@ include_once("../models/RendezVous.php");
 include_once("../controller/RendezVousController.php");
  require_once('admin/header.php'); 
 $cc1=new RendezVousController();
-$result = $cc1->afficherRendezVous1();
+if ( isset($_POST['id']))
+{
+$id = $_POST['id'];
+$result=$cc1->recupererRendezVous($id);
+}
 $liste=$cc1->affichernontraite();
 $liste2=$cc1->afficherconfirmer();
 $liste1=$cc1->afficherannuler();
@@ -22,24 +26,22 @@ $liste1=$cc1->afficherannuler();
  
 <section class="content">
 	<div class="row">
-      
+        <a href="MyIndex.php">Retour</a>
+        <h3> Liste des RV controller</h3>
         <form methode="POST" action="Myrecherche.php">
             rechercher par réference :
-            <input type="text" name="id" id="id" placeholder=" Entrer L'ID correspondant">
-            <input type="submit" name="Rechercher" value="rechercher">
+            <input type="text" name="id" id="id" placeholder=" rechercher Rendez Vous">
+            <input type="submit" name="rechercher" value="rechercher">
         </form>
 		<div class="col-md-12">
-
-      <a href="afficherRendezVoustrie.php "> Trier  les RV</a>
 			<div class="box box-info">
 				<div class="box-body table-responsive">
-            <h3> Liste des RV controller</h3>
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
                             <tr>
                                 <?php foreach ($liste as $key ) {?>
                                   <td>
-                                      Nbre de RV non traitées : <?php echo $key['total']; ?>
+                                      les  rendez vous controller non traitées : <?php echo $key['total']; ?>
                                   </td>
                                 
                             
@@ -47,14 +49,14 @@ $liste1=$cc1->afficherannuler();
 
                                 <?php foreach ($liste2 as $key ) {?>
                                   <td>
-                                      Nbre de RV  confirmées : <?php echo $key['total'] ; ?>
+                                      les  rendez vous controller confirmées : <?php echo $key['total'] ; ?>
                                   </td>
                                 
                           
                         <?php } ?>
                                                         <?php foreach ($liste1 as $key ) {?>
                                   <td>
-                                       Nbre de RV  annulées : <?php echo $key['total'] ; ?>
+                                      les  rendez vous controller annulées : <?php echo $key['total'] ; ?>
                                   </td>
                                   <?php } ?>
                                   </tr>
@@ -69,17 +71,18 @@ $liste1=$cc1->afficherannuler();
 						</thead>
 						<tbody>
         <?php 
-       
+       $id = $_GET['id'];
+$result=$cc1->recupererRendezVous($id);
         foreach ($result as $res ) {
-             # code...
-          {   
+             
         if($res['etat']==0)
         {
             $etatt="non traitée";
         }
         elseif ($res['etat']==1)
             {$etatt="confirmeée";}
-        else {$etatt="Annulée";}      
+        else {$etatt="Annulée";}    
+
             echo "<tr>";
              echo "<td>".$res['id']."</td>";
             echo "<td>".$res['dateRV']."</td>";
@@ -89,7 +92,7 @@ $liste1=$cc1->afficherannuler();
             echo "<td>".$etatt."</td>" ; 
             echo "<td><a href=\"update.php?id=$res[id]\">Edit</a> | <a href=\"delete.php?id=$res[id]\" onClick=\"return confirm('Are you sure you want to delete?')\">Delete</a></td>";        
         }
-        }
+        
         ?>
     </table>
 

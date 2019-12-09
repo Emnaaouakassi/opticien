@@ -4,7 +4,7 @@ include_once("../models/RendezVous.php");
 include_once("../controller/RendezVousController.php");
  require_once('admin/header.php'); 
 $cc1=new RendezVousController();
-$result = $cc1->afficherRendezVous1();
+$result = $cc1->afficherRendezVoustrie();
 $liste=$cc1->affichernontraite();
 $liste2=$cc1->afficherconfirmer();
 $liste1=$cc1->afficherannuler();
@@ -22,24 +22,22 @@ $liste1=$cc1->afficherannuler();
  
 <section class="content">
 	<div class="row">
-      
+        <h3> liste des rendez vous controller</h3>
         <form methode="POST" action="Myrecherche.php">
             rechercher par réference :
-            <input type="text" name="id" id="id" placeholder=" Entrer L'ID correspondant">
-            <input type="submit" name="Rechercher" value="rechercher">
+            <input type="text" name="id" id="id" placeholder=" rechercher Rendez Vous">
+            <input type="submit" name="rechercher" value="rechercher">
         </form>
 		<div class="col-md-12">
-
-      <a href="afficherRendezVoustrie.php "> Trier  les RV</a>
+      <a href="afficherRendezVoustrie.php "> trie rendez-vous</a>
 			<div class="box box-info">
 				<div class="box-body table-responsive">
-            <h3> Liste des RV controller</h3>
 					<table id="example1" class="table table-bordered table-striped">
 						<thead>
                             <tr>
                                 <?php foreach ($liste as $key ) {?>
                                   <td>
-                                      Nbre de RV non traitées : <?php echo $key['total']; ?>
+                                      les  rendez vous controller non traitées : <?php echo $key['total']; ?>
                                   </td>
                                 
                             
@@ -47,14 +45,14 @@ $liste1=$cc1->afficherannuler();
 
                                 <?php foreach ($liste2 as $key ) {?>
                                   <td>
-                                      Nbre de RV  confirmées : <?php echo $key['total'] ; ?>
+                                      les  rendez vous controller confirmées : <?php echo $key['total'] ; ?>
                                   </td>
                                 
                           
                         <?php } ?>
                                                         <?php foreach ($liste1 as $key ) {?>
                                   <td>
-                                       Nbre de RV  annulées : <?php echo $key['total'] ; ?>
+                                      les  rendez vous controller annulées : <?php echo $key['total'] ; ?>
                                   </td>
                                   <?php } ?>
                                   </tr>
